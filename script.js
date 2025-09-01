@@ -6,7 +6,7 @@ async function newPokemon() {
     const data = await abc.json();
     currentPokemon = data.name;
     const img = document.getElementById("Img");
-    img.src = data.sprites.front_default;
+    img.src = data.sprites.other["showdown"].front_default;
     img.classList.remove("revealed");
     document.getElementById("guessInput").value = "";
 }
