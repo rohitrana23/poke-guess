@@ -1,0 +1,214 @@
+:root {
+  --color-primary: #CC0000; 
+  --color-secondary: #0073B7;
+  --color-background: #E8EAEF; 
+  --color-card-bg: #FFFFFF;
+  --color-text: #333333;
+  --color-shadow: rgba(0, 0, 0, 0.15);
+  --border-radius: 10px;
+  --button-border: #990000;
+  --card-width: 380px;
+  --card-height: 520px;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  margin: 0;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  width: 100%;
+  max-width: 900px;
+}
+
+
+.card, .pokedex {
+  background-color: var(--color-card-bg);
+  padding: 25px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 15px var(--color-shadow);
+  text-align: center;
+  
+  width: var(--card-width);
+  height: var(--card-height);
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.card {
+    justify-content: space-between; 
+}
+
+.card h2 {
+  color: var(--color-primary);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+.pokemon-image {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+  filter: brightness(0) drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+  transition: filter 0.6s ease-in-out;
+}
+
+.pokemon-image.revealed {
+  filter: none;
+}
+
+input {
+  margin-top: 20px;
+  padding: 12px;
+  width: 66%;
+  border: 2px solid var(--color-background);
+  border-radius: var(--border-radius);
+  font-size: 1em;
+  text-align: center;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+
+
+button {
+  padding: 10px 25px;
+  border: 2px solid var(--button-border); 
+  /* border-radius: var(--border-radius); */
+  background: var(--color-primary);
+  color: white;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  box-shadow: 0 4px 0 var(--button-border);
+  transition: background 0.1s, transform 0.1s, box-shadow 0.1s;
+}
+
+button:hover:not(:disabled) {
+  background: #E60000; 
+  transform: translateY(1px); 
+  box-shadow: 0 3px 0 var(--button-border); 
+}
+
+button:active:not(:disabled) {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 var(--button-border); 
+}
+
+button:disabled {
+  background-color: #D3D3D3;
+  color: #888;
+  border-color: #A9A9A9;
+  box-shadow: 0 4px 0 #A9A9A9;
+  cursor: not-allowed;
+}
+
+.pokedex-btn {
+  margin-top: 20px;
+  width: 74%;
+  background-color: var(--color-secondary);
+  border-color: #005A92;
+  box-shadow: 0 4px 0 #005A92;
+}
+
+.pokedex-btn:hover:not(:disabled) {
+  background-color: #005A92; 
+  box-shadow: 0 3px 0 #005A92;
+}
+
+.pokedex-btn:active:not(:disabled) {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #005A92;
+}
+
+.message {
+  margin-top: auto; 
+  font-weight: 600;
+  min-height: 24px;
+  font-size: 1.4em;
+  color: rgb(6, 131, 6);
+}
+
+.pokedex {
+  justify-content: space-around; 
+  
+  transform: translateX(50px);
+  opacity: 0;
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+  border: 3px solid var(--color-secondary); 
+}
+
+.pokedex.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.pokedex h3 {
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  margin-top: 0;
+  font-size: 2.2em;
+  letter-spacing: 1px;
+}
+
+.pokedex img {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.pokedex p {
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+.pokedex .description {
+  margin-top: 15px;
+  padding: 10px;
+  border-top: 1px dashed var(--color-background);
+  font-style: italic;
+  color: var(--color-text);
+  text-align: justify;
+  line-height: 1.4;
+  font-size: 0.95em;
+}
+
+@media (max-width: 850px) {
+  .app-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .pokedex {
+    transform: translateX(0); 
+  }
+  
+  .pokedex.visible {
+    opacity: 1;
+  }
+}
